@@ -1,0 +1,121 @@
+{
+  "info": {
+    "_postman_id": "698eb14a-b7c7-c455-5b4f-83a36448ba53",
+    "name": "graph",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "1f8aeefc-ad5d-2a84-8e15-35cf483d62b7",
+      "name": "https://login.microsoftonline.com/common/oauth2/token ",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "var jsonData=JSON.parse(responseBody);",
+              "postman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+              "postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-www-form-urlencoded",
+              "type": "text"
+            },
+            {
+              "key": "grant_type",
+              "value": "authorization_code",
+              "type": "text"
+            },
+            {
+              "key": "client_id",
+              "value": "70872c07-ad4d-4661-9248-15f513f71f4a",
+              "type": "text"
+            },
+            {
+              "key": "client_secret",
+              "value": "F63egV63728WjpnGjpldKY5mIX1ws/b+C4X+0G/scLo=",
+              "type": "text"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://localhost",
+              "type": "text"
+            },
+            {
+              "key": "code",
+              "value": "AQABAAIAAADRNYRQ3dhRSrm-4K-adpCJkPMXHOCYqWyaWRH6Jc2b9q8SmbTbn7hdN34Glc4ySil9a0mobikxuWRwNdoMC4pf1mSHlx3Ks14pwJ3-qQt0CNzODpu2nunZ9sy7io5VRN9V2Nj4hBTqZP4xwi1wpS3GGRFNpNCbMGFsvGYrXOWBorFpwcTordD22sZS9sqEeRWs5n-UJSr1lEOUfE-2doTyzV2nwQjsfzuzzmNbeSwZN5ONySai9Bwdzjqi3RtPsAteWGh2xQIqNuurNi5WPycvw1nFLnE-wGtrpWkF1H8yJ7s0C1sWcCXQKs3riJ1hQgQqRa0FJX4Y6-f4Qh7QKdBHEGcuXBuzs4Q_01yQkR2g0H28KkUwaIDmIWIJ1fETCkvucgpDy56mx5xgGNzvkfLJyfj0q4e4AGX1v9o9jTlrKYn2-0B4ERRifCTHdbl4o9_9oijW4yIPh7KInAbQr_i_lUl_FKOv6bQlORRWj1Jk4CAA",
+              "type": "text"
+            },
+            {
+              "key": "resource",
+              "value": "https://graph.microsoft.com/",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "https://login.microsoftonline.com/common/oauth2/token"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "018a80a8-4d75-bade-ee6b-6301ec00e446",
+      "name": " https://forticasb.sharepoint.com/_api/web/siteusers copy copy copy copy copy",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;odata=verbose",
+            "disabled": true
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {},
+        "url": "https://graph.microsoft.com/v1.0/users/",
+        "description": "list all users"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "2cf887bd-6f66-ec96-73d9-a6e4bec370e3",
+      "name": " https://forticasb.sharepoint.com/_api/web/siteusers copy copy copy copy copy copy",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;odata=verbose",
+            "disabled": true
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {},
+        "url": "https://graph.microsoft.com/v1.0/users/{c7d04081-b84b-474b-850d-3d926e75344d}/drive",
+        "description": "list all users"
+      },
+      "response": []
+    }
+  ]
+}
