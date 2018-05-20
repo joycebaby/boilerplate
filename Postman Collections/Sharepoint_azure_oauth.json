@@ -356,7 +356,76 @@
         ],
         "body": {},
         "url": "https://binxufortinet.sharepoint.com/_api/sp.userprofiles.profileloader.getprofileloader/getuserprofile/PersonalSite/Owner",
-        "description": "list all site collections, add testetstestetstestets"
+        "description": "list all site collections"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "f47bb656-11fb-4e5d-b9e3-5d3e2e446095",
+      "name": "https://login.microsoftonline.com/common/oauth2/token  Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "var jsonData=JSON.parse(responseBody);",
+              "postman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+              "postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-www-form-urlencoded",
+              "type": "text"
+            },
+            {
+              "key": "grant_type",
+              "value": "refresh_token",
+              "type": "text"
+            },
+            {
+              "key": "client_id",
+              "value": "70872c07-ad4d-4661-9248-15f513f71f4a",
+              "type": "text"
+            },
+            {
+              "key": "client_secret",
+              "value": "F63egV63728WjpnGjpldKY5mIX1ws/b+C4X+0G/scLo=",
+              "type": "text"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://localhost",
+              "type": "text"
+            },
+            {
+              "key": "refresh_token",
+              "value": "{{refresh_token}}",
+              "type": "text"
+            },
+            {
+              "key": "resource",
+              "value": "https://binxufortinet.sharepoint.com",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "https://login.microsoftonline.com/common/oauth2/token",
+        "description": "get token"
       },
       "response": []
     }
