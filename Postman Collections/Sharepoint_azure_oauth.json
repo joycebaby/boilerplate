@@ -1,0 +1,364 @@
+{
+  "info": {
+    "_postman_id": "bb056f61-8994-8d37-67f0-be6a1676ccf1",
+    "name": "Sharepoint_azure_oauth",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "4adeb7ad-41e1-fb18-fb0b-9bb095f783a2",
+      "name": "https://login.microsoftonline.com/common/oauth2/token ",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "var jsonData=JSON.parse(responseBody);",
+              "postman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+              "postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "Content-Type",
+              "value": "application/x-www-form-urlencoded",
+              "type": "text"
+            },
+            {
+              "key": "grant_type",
+              "value": "refresh_token",
+              "type": "text"
+            },
+            {
+              "key": "client_id",
+              "value": "70872c07-ad4d-4661-9248-15f513f71f4a",
+              "type": "text"
+            },
+            {
+              "key": "client_secret",
+              "value": "F63egV63728WjpnGjpldKY5mIX1ws/b+C4X+0G/scLo=",
+              "type": "text"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://localhost",
+              "type": "text"
+            },
+            {
+              "key": "refresh_token",
+              "value": "{{refresh_token}}",
+              "type": "text"
+            },
+            {
+              "key": "resource",
+              "value": "https://binxufortinet.sharepoint.com",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "https://login.microsoftonline.com/common/oauth2/token",
+        "description": "get token"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "cf1bac9b-4b33-9b18-7460-d91e2ae0da60",
+      "name": "https://login.microsoftonline.com/common/oauth2/token ",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "",
+              "var jsonData=JSON.parse(responseBody);",
+              "postman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+              "postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "authorization_code",
+              "type": "text"
+            },
+            {
+              "key": "client_id",
+              "value": "70872c07-ad4d-4661-9248-15f513f71f4a",
+              "type": "text"
+            },
+            {
+              "key": "client_secret",
+              "value": "F63egV63728WjpnGjpldKY5mIX1ws/b+C4X+0G/scLo=",
+              "type": "text"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://localhost",
+              "type": "text"
+            },
+            {
+              "key": "code",
+              "value": "AQABAAIAAADRNYRQ3dhRSrm-4K-adpCJPy5InWEDjFOtftmfbFP8gEEm5v4Pctctv8apoEyP1D1GfSAw-5iWybVopkovkatMGVs1U9GtCR5XVq46ieOVU2nNatDNzu2-xc3DvxiOFXTGYCG9dLtLHw61CgrXvjNIf06YRfsQm4IT6J5ebd1X2zXc35uBahNr3ORZoouLmWMVVf4GqjPvuFP65egSE2c6DT2C__OHGSZ2hC-l3dKq0OgAwb9DafiE1Lm-wQo5u9YUw61nmb507rCvLbmUtDJuXi5Rx-q4v4CIp06ZJjAzabaD2PFQtX3E-CqaC7YjeS8gBhkqBT6qZx3XawgPVF-1OwKJwwvu6vFr3Dcu7pTuFdwMQSFkdFVnb-Vf5Gc8EnPWdtOJDVfIVI2QfAmXPPftIKifAAUezCj6TF08pim1wIzN_NMxHTD4hjPWrxJlckEE7Pp4OeDfQue3dgbC6WlO0fYlhn2wGb6oTNYSUokghiAA",
+              "type": "text"
+            },
+            {
+              "key": "resource",
+              "value": "https://binxufortinet.sharepoint.com",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "https://login.microsoftonline.com/common/oauth2/token",
+        "description": "get token"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "776cf50e-3a6a-de74-835b-e57b8c6201c2",
+      "name": " https://forticasb.sharepoint.com/_api/web/siteusers",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;odata=verbose"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {},
+        "url": "https://binxufortinet.sharepoint.com/_api/web/siteusers"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "950a0159-892c-ca0f-0bc3-fb2c821de0d2",
+      "name": " https://forticasb.sharepoint.com/_api/web/siteusers copy",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;odata=verbose"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {},
+        "url": "https://binxufortinet.sharepoint.com/_api/SP.UserProfiles.PeopleManager/GetMyProperties"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "0e035a85-ac24-b7cc-5644-56c4d8fbd11b",
+      "name": " https://forticasb.sharepoint.com/_api/web/siteusers copy copy",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;odata=verbose"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {},
+        "url": "https://binxufortinet.sharepoint.com/_api/web/lists"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "ecf6adc0-94dc-d499-29c9-7bb126abebb5",
+      "name": " https://forticasb.sharepoint.com/_api/web/siteusers copy copy copy",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;odata=verbose"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {},
+        "url": {
+          "raw": "https://binxufortinet.sharepoint.com/_api/SP.UserProfiles.PeopleManager/GetPropertiesFor(accountName=@v)?@v='i:0%23.f|membership|binxufortinet@binxufortinet.onmicrosoft.com'",
+          "protocol": "https",
+          "host": [
+            "binxufortinet",
+            "sharepoint",
+            "com"
+          ],
+          "path": [
+            "_api",
+            "SP.UserProfiles.PeopleManager",
+            "GetPropertiesFor(accountName=@v)"
+          ],
+          "query": [
+            {
+              "key": "@v",
+              "value": "'i:0%23.f|membership|binxufortinet@binxufortinet.onmicrosoft.com'"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "d78780fe-8550-aa62-be8f-54157c5884d9",
+      "name": " https://forticasb.sharepoint.com/_api/web/siteusers copy copy copy copy",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;odata=verbose"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {},
+        "url": {
+          "raw": "https://binxufortinet.sharepoint.com/_api/search/query?querytext='contentclass:sts_site'",
+          "protocol": "https",
+          "host": [
+            "binxufortinet",
+            "sharepoint",
+            "com"
+          ],
+          "path": [
+            "_api",
+            "search",
+            "query"
+          ],
+          "query": [
+            {
+              "key": "querytext",
+              "value": "'contentclass:sts_site'"
+            }
+          ]
+        },
+        "description": "list all site collections"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "52b7e300-1288-56c9-bd2a-9791fb29d649",
+      "name": " https://forticasb.sharepoint.com/_api/web/siteusers copy copy copy copy copy",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;odata=verbose"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {},
+        "url": {
+          "raw": "https://binxufortinet.sharepoint.com/_api/search/query?querytext='contentclass:sts_site'",
+          "protocol": "https",
+          "host": [
+            "binxufortinet",
+            "sharepoint",
+            "com"
+          ],
+          "path": [
+            "_api",
+            "search",
+            "query"
+          ],
+          "query": [
+            {
+              "key": "querytext",
+              "value": "'contentclass:sts_site'"
+            }
+          ]
+        },
+        "description": "list all site collections"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "581a4e64-9a69-7200-c64e-86d4317e8f30",
+      "name": " https://forticasb.sharepoint.com/_api/web/siteusers copy copy copy copy copy copy",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;odata=verbose"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {},
+        "url": "https://binxufortinet.sharepoint.com/_api/sp.userprofiles.profileloader.getprofileloader/getuserprofile/PersonalSite/Owner",
+        "description": "list all site collections"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "303190ee-4108-c8e3-d35c-0bcfff8fa563",
+      "name": " https://forticasb.sharepoint.com/_api/web/siteusers copy copy copy copy copy copy copy",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json;odata=verbose"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {},
+        "url": "https://binxufortinet.sharepoint.com/_api/sp.userprofiles.profileloader.getprofileloader/getuserprofile/PersonalSite/Owner",
+        "description": "list all site collections"
+      },
+      "response": []
+    }
+  ]
+}
