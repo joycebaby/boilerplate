@@ -85,6 +85,15 @@ paths:
         - petstore_auth:
             - 'write:pets'
             - 'read:pets'
+    get:
+      summary: ''
+      operationId: get-pet
+      responses:
+        '200':
+          description: OK
+      tags:
+        - pet
+        - store
   /pet/findByStatus:
     get:
       tags:
