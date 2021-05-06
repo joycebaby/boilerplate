@@ -28,7 +28,7 @@ schemes:
   - https
   - http
 paths:
-  /pet:
+  '/pet/{cccc}/{bbbb}':
     post:
       tags:
         - pet
@@ -94,6 +94,16 @@ paths:
       tags:
         - pet
         - store
+        - d
+    parameters:
+      - type: string
+        name: cccc
+        in: path
+        required: true
+      - type: string
+        name: bbbb
+        in: path
+        required: true
   /pet/findByStatus:
     get:
       tags:
